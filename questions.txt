@@ -1,0 +1,6 @@
+Solve these questions.
+
+WAP to print a fibonacci series upto n terms.
+WAP to print armstrong number upto n terms.
+WAP to print the sum of digits of a number.
+WAP to sort a list entered by the user without using sort function.
