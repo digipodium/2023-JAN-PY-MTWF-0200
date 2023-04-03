@@ -22,12 +22,13 @@ class MyScraper:
     def collect_all(self):
         while True:
             result = self.collect()
-            if len(result) == 0:
+            if len(result) >= 1:
+                self.dataset.extend(result)
+                self.page += 1
+                self.url = f'https://www.flipkart.com/search?q={self.query}&page={self.page}'
+                print(self.url)
+            else:
                 break
-            self.dataset.extend(result)
-            self.page += 1
-            self.url = f'https://www.flipkart.com/search?q={self.query}&page={self.page}'
-    
     def save(self, filename):
         df = pd.DataFrame(self.dataset)
         df.dropna(how='all', inplace=True)
@@ -36,9 +37,9 @@ class MyScraper:
 
 if __name__ == '__main__':
     # create object
-    sc = MyScraper('mobile')
+    sc = MyScraper('laptops')
     # collect data
     sc.collect_all()
     # save data
-    sc.save('mobiles.csv')
+    sc.save('laptops.csv')
     
